@@ -1,5 +1,29 @@
 {
+  "name": "black-jack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "black-jack.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier --write *.js",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexpaul/black-jack.git"
+  },
+  "author": "Alex Paul",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexpaul/black-jack/issues"
+  },
+  "homepage": "https://github.com/alexpaul/black-jack#readme",
+  "devDependencies": {
+    "prettier": "^2.1.2"
+  },
   "dependencies": {
-    "require": "^2.4.20"
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.6"
   }
 }

@@ -1,5 +1,6 @@
 // BlackJack command line application
 
+const { rawListeners } = require("process");
 var readline = require("readline");
 
 class Card {
@@ -94,35 +95,32 @@ class BlackJack {
 const blackJack = new BlackJack();
 
 const r1 = readline.createInterface({
-    input: process.stdin, 
-    output: process.stdout
-}); 
+  input: process.stdin,
+  output: process.stdout,
+});
 
-r1.question('Do you want to hit or pass ?', (answer) => {
-    console.log(`You entered ${answer}`); 
+const gamePlay = function () {
+  r1.question('Do you want to `hit` or `pass`?', (answer) => {
+    if (answer === 'hit') {
+      const result = blackJack.hit();
+      if (result.gamePlayStatus === 'blackJack') {
+        console.log(`Woohoo BlackJack!!!!`); 
+        return r1.close(); 
+      } 
+      if (result.gamePlayStatus === 'bust') {
+        console.log(`Better luck next time.`); 
+        return r1.close(); 
+      }  
+    }
+    if (answer === 'pass') {
+      const computerScore = blackJack.computerScore(); 
+      //if (result.score < computerScore) {
+        console.log(`Your score is ${blackJack.getScore()} and the computer is ${computerScore}`); 
+      //} 
+      return r1.close(); 
+    }
+    gamePlay();
+  });
+};
 
-    r1.close(); 
-}); 
-
-//   let answer = 'hit';
-//   do {
-//     answer = window.prompt('Do you want to `hit` or `pass` ?');
-//     if (answer === 'hit') {
-//       const result = blackJack.hit();
-//       if (result.gamePlayStatus === 'blackJack') {
-//         console.log(`Woohoo BlackJack!!!!`);
-//         answer = 'done';
-//       }
-//       if (result.gamePlayStatus === 'bust') {
-//         console.log(`Better luck next time.`);
-//         answer = 'lost'
-//       }
-//     }
-//     if (answer === 'pass') {
-//       const computerScore = blackJack.computerScore();
-//       //if (result.score < computerScore) {
-//         console.log(`Your score is ${blackJack.getScore()} and the computer is ${computerScore}`);
-//       //}
-//     }
-//     console.log();
-//   } while ((answer === 'hit') && !(blackJack.hasCards()));
+gamePlay();

@@ -1,7 +1,8 @@
 // BlackJack command line application
 
 const { rawListeners } = require("process");
-var readline = require("readline");
+
+const readline = require("readline");
 
 class Card {
   constructor(value, suit) {
@@ -56,9 +57,9 @@ class BlackJack {
   }
 
   hit() {
-    const card = this.cards[Math.floor(Math.random() * this.cards.length)]; // TODO:
-    const index = this.cards.indexOf(card); // TODO:
-    this.cards.splice(index, 1); // TODO:
+    const card = this.cards[Math.floor(Math.random() * this.cards.length)]; 
+    const index = this.cards.indexOf(card); 
+    this.cards.splice(index, 1); 
     console.log(
       `${this.cards.length} cards left, ${card.value}${
         card.suit
@@ -89,7 +90,7 @@ class BlackJack {
     return score;
   }
 
-  playerPassed() {
+  stand() {
     const playerScore = blackJack.getScore();
     const computerScore = blackJack.computerScore();
     const playerScoreDiff = 21 - playerScore;
@@ -126,7 +127,7 @@ const r1 = readline.createInterface({
 });
 
 const gamePlay = function () {
-  r1.question("Do you want to `hit` or `pass`?", (answer) => {
+  r1.question("Do you want to `hit` or `stand`?", (answer) => {
     if (answer === "hit") {
       const result = blackJack.hit();
       if (result.gamePlayStatus === "blackJack") {
@@ -138,8 +139,8 @@ const gamePlay = function () {
         return r1.close();
       }
     }
-    if (answer === "pass") {
-      blackJack.playerPassed();
+    if (answer === "stand") {
+      blackJack.stand();
       return r1.close();
     }
     gamePlay();

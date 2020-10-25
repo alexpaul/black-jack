@@ -88,6 +88,32 @@ class BlackJack {
     const score = Math.floor(Math.random() * (21 - 18) + 18);
     return score;
   }
+
+  playerPassed() {
+    const playerScore = blackJack.getScore();
+    const computerScore = blackJack.computerScore();
+    const playerScoreDiff = 21 - playerScore;
+    const computerScoreDiff = 21 - computerScore;
+    if (computerScore > 21) {
+      console.log(
+        `You won with ${playerScore} and the computer lost with ${computerScore}`
+      );
+    } else {
+      if (computerScoreDiff === playerScoreDiff) {
+        console.log(
+          `Tie!, computer score is ${computerScore} and your score is ${playerScore}`
+        );
+      } else if (computerScoreDiff < playerScoreDiff) {
+        console.log(
+          `You lost with ${playerScore} and the computer won with ${computerScore}`
+        );
+      } else {
+        console.log(
+          `You won with ${playerScore} and the computer lost with ${computerScore}`
+        );
+      }
+    }
+  }
 }
 
 //---->Game start
@@ -100,24 +126,21 @@ const r1 = readline.createInterface({
 });
 
 const gamePlay = function () {
-  r1.question('Do you want to `hit` or `pass`?', (answer) => {
-    if (answer === 'hit') {
+  r1.question("Do you want to `hit` or `pass`?", (answer) => {
+    if (answer === "hit") {
       const result = blackJack.hit();
-      if (result.gamePlayStatus === 'blackJack') {
-        console.log(`Woohoo BlackJack!!!!`); 
-        return r1.close(); 
-      } 
-      if (result.gamePlayStatus === 'bust') {
-        console.log(`Better luck next time.`); 
-        return r1.close(); 
-      }  
+      if (result.gamePlayStatus === "blackJack") {
+        console.log(`Woohoo BlackJack!!!!`);
+        return r1.close();
+      }
+      if (result.gamePlayStatus === "bust") {
+        console.log(`Better luck next time.`);
+        return r1.close();
+      }
     }
-    if (answer === 'pass') {
-      const computerScore = blackJack.computerScore(); 
-      //if (result.score < computerScore) {
-        console.log(`Your score is ${blackJack.getScore()} and the computer is ${computerScore}`); 
-      //} 
-      return r1.close(); 
+    if (answer === "pass") {
+      blackJack.playerPassed();
+      return r1.close();
     }
     gamePlay();
   });

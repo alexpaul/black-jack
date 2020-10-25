@@ -17,7 +17,7 @@ const r1 = readline.createInterface({
 });
 
 r1.question('Do you want to `hit` or `stand`?', (answer) => {
-  console.log(`You entered ${answer}`); 
+  console.log(`You entered ${answer}`); // You entered hit
 })
 ```
 

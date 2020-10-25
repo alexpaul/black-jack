@@ -1,6 +1,13 @@
 # BlackJack, a command line JavaScript application
 
-## 1. Dependencies 
+## 1. Running this application 
+
+* `git clone` this repo. 
+* Open up the app in VSCode or a similar IDE.  
+* run `npm install` to install any dependencies this project uses. 
+* run `node black-jack.js` and have some BlackJack fun. A♠️, K♥️
+
+## 2. Dependencies 
 
 `require` package is used in this application to read in user input. 
 
@@ -21,7 +28,7 @@ r1.question('Do you want to `hit` or `stand`?', (answer) => {
 })
 ```
 
-## 1. Main classes
+## 3. Main classes
 
 #### Card 
 
@@ -150,7 +157,7 @@ class BlackJack {
 
 ![black-jack-gif](Assets/black-jack.gif)
 
-## 2. Game play start 
+## 4. Game play start 
 
 ```javascript 
 const blackJack = new BlackJack();

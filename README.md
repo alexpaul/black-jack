@@ -148,6 +148,8 @@ class BlackJack {
 }
 ```
 
+![black-jack-gif](Assets/black-jack.gif)
+
 ## 2. Game play start 
 
 ```javascript 

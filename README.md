@@ -183,3 +183,7 @@ const gamePlay = function () {
 
 gamePlay();
 ```
+
+## Bonus features 
+
+If cloning this repo or working on the BlackJack implementation, please feel free to add additional BlackJack features like being able to place bets and splitting cards. Happy coding 🥳
